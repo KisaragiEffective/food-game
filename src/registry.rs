@@ -1,9 +1,7 @@
 use std::any::{Any, TypeId};
 use std::collections::HashMap;
-use std::hash::Hash;
-use typemap::TypeMap;
+use crate::any;
 use crate::ingredient::IngredientTag;
-use crate::registry::private::Sealed;
 use crate::unit::MeasuringUnit;
 
 /// Express associative array with key of I and type of I::MeasuringUnit where I is Ingredient.
@@ -34,47 +32,11 @@ impl IngredientRegistry {
     }
 
     pub fn get<I: IngredientTag + Any>(&self, key: &I) -> Option<&I::MeasuringUnit> {
-        self.inner.get(&key.type_id()).map(|x| unsafe { downcast_ref_unchecked(x) })
+        self.inner.get(&key.type_id()).map(|x| unsafe { any::downcast_ref_unchecked(x) })
     }
 
     pub fn get_raw(&self, key: &TypeId) -> Option<&dyn MeasuringUnit> {
         self.inner.get(key).map(|x| x.as_ref())
-    }
-}
-
-mod private {
-    pub(super) trait Sealed {}
-}
-
-trait DowncastUnchecked : private::Sealed {
-    type P<T: Any + ?Sized>;
-
-    unsafe fn downcast<R: Any>(this: Self::P<dyn Any>) -> Self::P<R>;
-}
-
-impl<'a> Sealed for &'a dyn Any {}
-
-impl<'a> DowncastUnchecked for &'a dyn Any {
-    type P<T: Any + ?Sized> = &'a T;
-
-    unsafe fn downcast<R: Any>(this: Self::P<dyn Any>) -> Self::P<R> {
-        debug_assert!(this.is::<R>());
-        unsafe { &*(this as *const dyn Any as *const R) }
-    }
-}
-
-// this function is port of stdlib: MIT OR Apache-2.0
-unsafe fn downcast_ref_unchecked<T: Any>(this: &dyn Any) -> &T {
-    debug_assert!(this.is::<T>());
-    unsafe { &*(this as *const dyn Any as *const T) }
-}
-
-unsafe fn downcast_boxed<T: Any>(this: Box<dyn Any>) -> Box<T> {
-    debug_assert!(this.is::<T>());
-    let raw: *mut dyn Any = Box::into_raw(this);
-
-    unsafe {
-        Box::from_raw(raw as *mut T)
     }
 }
 
@@ -134,7 +96,7 @@ impl RegistryEntryGuard {
 
 #[cfg(test)]
 mod tests {
-    use std::any::{Any, TypeId};
+    use std::any::TypeId;
     use crate::ingredient::IngredientTag;
     use crate::registry::IngredientRegistry;
     use crate::unit::{LiquidUnit, SolidUnit};
