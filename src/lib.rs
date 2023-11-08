@@ -8,7 +8,7 @@ mod any;
 use std::any::Any;
 use wasm_bindgen::prelude::*;
 use crate::ingredient::{IngredientTag, IntermediateIngredient};
-use crate::registry::IngredientRegistry;
+use registry::ingredient::IngredientRegistry;
 use crate::unit::{LiquidUnit, SolidUnit};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global

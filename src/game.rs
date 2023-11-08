@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use crate::registry::IngredientRegistry;
+use crate::registry::ingredient::IngredientRegistry;
 use crate::unit::{LiquidUnit, MeasuringUnit};
 use crate::{Recipe, Water};
 

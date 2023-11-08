@@ -1,5 +1,5 @@
 use std::any::Any;
-use crate::registry::IngredientRegistry;
+use crate::registry::ingredient::IngredientRegistry;
 use crate::unit::MeasuringUnit;
 
 pub trait IngredientTag: Default {
