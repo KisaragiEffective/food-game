@@ -4,6 +4,8 @@ mod registry;
 mod ingredient;
 mod game;
 mod any;
+mod kitchenware;
+mod material;
 
 use std::any::Any;
 use wasm_bindgen::prelude::*;
