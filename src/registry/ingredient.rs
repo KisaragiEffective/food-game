@@ -100,7 +100,7 @@ mod tests {
     use crate::ingredient::IngredientTag;
     use crate::registry::ingredient::IngredientRegistry;
     use crate::unit::{LiquidUnit, SolidUnit};
-    use crate::{CookedRice, Rice, Water};
+    use crate::food::{CookedRice, Rice, Water};
 
     // #[cfg(miri)]
     #[test]

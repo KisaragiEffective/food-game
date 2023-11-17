@@ -1,7 +1,8 @@
 use std::cell::RefCell;
 use crate::registry::ingredient::IngredientRegistry;
 use crate::unit::{LiquidUnit, MeasuringUnit};
-use crate::{Recipe, Water};
+use crate::Recipe;
+use crate::food::Water;
 
 struct Game {
     倉庫: RefCell<IngredientRegistry>,
