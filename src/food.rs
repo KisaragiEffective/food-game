@@ -70,3 +70,56 @@ impl CookedRice {
         Recipe::new(x, SolidUnit::new(1))
     }
 }
+
+struct Fish;
+
+struct Shrimp;
+
+struct Oil;
+
+/// 揚げた食べ物
+struct Fried<T>(T);
+
+/// 丼もの。
+///
+/// ## Example
+/// ```ignore
+/// let エビ天丼 = OnBowl(Rice, Fried(Shrimp));
+/// ```
+struct OnBowl<Of, With>(Of, With);
+
+/// 小麦
+struct Wheat;
+
+/// 大麦
+struct Barley;
+
+/// パン。小麦粉を生地とするものだけではなく、米粉にも対応できる。
+struct Bread<D>(D);
+
+/// ジャム。酸味があるフルーツを与えることを想定している。
+struct Jam<Fr>(Fr);
+
+/// うどん
+struct Udon;
+
+/// ソバ
+struct SobaCrop;
+
+/// そばの生地
+struct SobaDough;
+
+/// そば
+struct Soba;
+
+/// 鳥の卵。鶏卵とは限らない。
+struct Egg<Of>(Of);
+
+/// とうもろこし
+struct Corn;
+
+/// じゃがいも
+struct Potato;
+
+/// 餃子
+struct Jiaozi;
