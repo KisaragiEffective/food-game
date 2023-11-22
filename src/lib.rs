@@ -30,7 +30,7 @@ pub fn greet() {
 }
 
 /// 食材を調理する場合、どの材料がどれだけ要るのか
-struct Recipe<MU> {
+pub struct Recipe<MU> {
     required_ingredients: IngredientRegistry,
     measuring_unit: MU,
 }

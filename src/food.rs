@@ -1,5 +1,6 @@
 use std::any::Any;
-use crate::ingredient::{IngredientTag, IntermediateIngredient};
+use std::cell::RefCell;
+use crate::ingredient::{IngredientRequirementComputationCache, IngredientTag, IntermediateIngredient};
 use crate::Recipe;
 use crate::registry::ingredient::IngredientRegistry;
 use crate::unit::{LiquidUnit, SolidUnit};
@@ -28,7 +29,7 @@ impl IntermediateIngredient for CookedRice {
     type Ingredients = ((Rice, Water));
     type Cooked = Self;
 
-    fn has_a_ingredient_of<T: IngredientTag + Any + 'static>() -> bool {
+    fn has_a_ingredient_of<T: IngredientTag + Any + 'static>(_cache: &RefCell<IngredientRequirementComputationCache>) -> bool {
         let a = core::any::TypeId::of::<T>();
         let b = core::any::TypeId::of::<Rice>();
         let c = core::any::TypeId::of::<Water>();
@@ -62,7 +63,7 @@ impl IntermediateIngredient for CookedRice {
 
 impl CookedRice {
     /// 最小単位で調理する場合、どの材料がどれだけ要るのか
-    fn required_minimal_ingredients() -> Recipe<<Self as IngredientTag>::MeasuringUnit> {
+    pub fn required_minimal_ingredients() -> Recipe<<Self as IngredientTag>::MeasuringUnit> {
         let mut x = IngredientRegistry::new();
         x.insert(Rice, SolidUnit::new(1));
         x.insert(Water, LiquidUnit::new(1));
