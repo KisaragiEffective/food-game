@@ -7,6 +7,7 @@ mod any;
 mod kitchenware;
 mod material;
 mod food;
+mod animal;
 
 use std::any::Any;
 use wasm_bindgen::prelude::*;
