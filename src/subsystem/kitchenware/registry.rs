@@ -1,7 +1,7 @@
 use std::any::TypeId;
 use std::collections::HashMap;
-use crate::kitchenware::KitchenwareTag;
-use crate::material::MaterialTag;
+use crate::subsystem::kitchenware::definition::KitchenwareTag;
+use crate::subsystem::material::definition::MaterialTag;
 
 pub struct KitchenwareRepairElementRegistry(HashMap<TypeId, Box<dyn MaterialTag>>);
 

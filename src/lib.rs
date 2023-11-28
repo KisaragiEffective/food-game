@@ -1,19 +1,15 @@
 mod utils;
 mod unit;
 mod registry;
-mod ingredient;
 mod game;
 mod any;
-mod kitchenware;
-mod material;
-mod food;
-mod animal;
 mod save;
+mod subsystem;
 
 use std::any::Any;
 use wasm_bindgen::prelude::*;
-use crate::ingredient::{IngredientTag, IntermediateIngredient};
-use registry::ingredient::IngredientRegistry;
+use crate::subsystem::ingredient::definition::{IngredientTag, IntermediateIngredient};
+use subsystem::ingredient::registry::IngredientRegistry;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.

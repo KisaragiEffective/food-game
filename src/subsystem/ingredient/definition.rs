@@ -1,7 +1,7 @@
 use std::any::{Any, TypeId};
 use std::cell::RefCell;
 use std::collections::HashSet;
-use crate::registry::ingredient::IngredientRegistry;
+use crate::subsystem::ingredient::registry::IngredientRegistry;
 use crate::unit::MeasuringUnit;
 
 pub trait IngredientTag: Default {
@@ -41,8 +41,8 @@ mod tests {
     use std::sync::mpsc;
     use std::time::Duration;
     use std::hint::black_box;
-    use crate::ingredient::{IngredientRequirementComputationCache, IngredientTag, IntermediateIngredient};
-    use crate::registry::ingredient::IngredientRegistry;
+    use crate::subsystem::ingredient::definition::{IngredientRequirementComputationCache, IngredientTag, IntermediateIngredient};
+    use crate::subsystem::ingredient::registry::IngredientRegistry;
     use crate::unit::SolidUnit;
 
     macro_rules! mm {

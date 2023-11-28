@@ -1,7 +1,7 @@
 use std::marker::PhantomData;
-use crate::material::{Ceramic, MaterialTag};
+use crate::subsystem::material::definition::{Ceramic, MaterialTag};
 
-/// Marker trait for [`crate::registry::kitchenware::KitchenwareRegistry`].
+/// Marker trait for [`crate::subsystem::kitchenware::registry::KitchenwareRegistry`].
 pub trait KitchenwareTag {
 }
 

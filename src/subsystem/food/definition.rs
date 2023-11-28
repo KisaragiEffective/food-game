@@ -1,8 +1,8 @@
 use std::any::Any;
 use std::cell::RefCell;
-use crate::ingredient::{IngredientRequirementComputationCache, IngredientTag, IntermediateIngredient};
+use crate::subsystem::ingredient::definition::{IngredientRequirementComputationCache, IngredientTag, IntermediateIngredient};
 use crate::Recipe;
-use crate::registry::ingredient::IngredientRegistry;
+use crate::subsystem::ingredient::registry::IngredientRegistry;
 use crate::unit::{LiquidUnit, SolidUnit};
 
 #[derive(Default)]

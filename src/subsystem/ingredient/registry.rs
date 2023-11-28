@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::any::{Any, TypeId};
 use crate::any;
-use crate::ingredient::IngredientTag;
+use super::definition::IngredientTag;
 use crate::unit::MeasuringUnit;
 
 /// Express associative array with key of I and type of I::MeasuringUnit where I is Ingredient.
@@ -97,10 +97,10 @@ impl RegistryEntryGuard {
 #[cfg(test)]
 mod tests {
     use std::any::TypeId;
-    use crate::ingredient::IngredientTag;
-    use crate::registry::ingredient::IngredientRegistry;
+    use super::super::definition::IngredientTag;
+    use crate::subsystem::ingredient::registry::IngredientRegistry;
     use crate::unit::{LiquidUnit, SolidUnit};
-    use crate::food::{CookedRice, Rice, Water};
+    use crate::subsystem::food::definition::{CookedRice, Rice, Water};
 
     // #[cfg(miri)]
     #[test]
